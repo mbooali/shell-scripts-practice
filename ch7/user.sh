@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+VALID=0
+
+while [ $VALID -eq 0 ]
+do
+    read -p "Please a enter your Name and Age: " NAME AGE
+    if [[ ( -z $NAME ) || ( -z $AGE ) ]]
+    then
+        echo "Not enough parameters passed!"
+        continue
+    elif [[ ! $NAME =~ ^[A-Za-z]+$ ]]
+    then
+        echo "Non Alphabet character detected [$NAME]"
+        continue
+    elif [[ ! $AGE =~ ^[0-9]+$ ]]
+    then
+        echo "Non Digit character detected [$AGE]"
+        continue
+    fi
+    VALID=1
+done
+
+echo "Name: $NAME and the Age: $AGE"
+
+exit 0
